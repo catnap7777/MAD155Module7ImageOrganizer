@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">MAD155Module7ImageOrganizer</string>
+    <string name="txtTitle">Movie Image Organizer</string>
+    <string name="txtScrollInstructions">Scroll and Pick Your Favorite Star</string>
+
+    <string name="imgLarge">Actor or Actress Image</string>
+    <string name="txtName"></string>
+    <string name="btn1">Click for Movie List</string>
+
+    <string name="name1">Cate Blanchett</string>
+    <string name="name2">Jennifer Lawrence</string>
+    <string name="name3">Kate Winslet</string>
+    <string name="name4">Orlando Bloom</string>
+    <string name="name5">Tom Hanks</string>
+    <string name="name6">Will Smith</string>
+
+
 </resources>
