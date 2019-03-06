@@ -99,10 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView pic;
 
-    //GridView grid2;
     List<Integer> movieList;
-
-    int clickedActor = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
         //}
         //catch (NullPointerException e){}
         //setContentView(R.layout.activity_main);
-
 
 
         GridView grid1 = (GridView) findViewById(R.id.gridView1);
@@ -141,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(getBaseContext(),"Selected Celebrity: " + (position + 1),
                         Toast.LENGTH_SHORT).show();
-
 
                 pic.setImageResource(celebrityPic[position]);
                 celebNameTV.setText(celebrityName[position]);
@@ -189,19 +184,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //.. testing
+        //..  for testing and initially to have something in movieList otherwise
+        //..  I get a null error when I try movieList.clear() in switch stmt
         movieList = new ArrayList<>(Arrays.asList(tomMovies));
         grid2.setAdapter(new ImageAdapter2(this));
         //movieList.clear();
         //movieList = new ArrayList<>(Arrays.asList(willMovies));
         //grid2.setAdapter(new ImageAdapter2(this));
 
-
-
-
     }
-
-
 
     public class ImageAdapter1 extends BaseAdapter {
 
@@ -249,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            //return movieList.length;
+            //return movieList.length; //if this was an array instead and not a List
             return movieList.size();
         }
 
@@ -267,11 +258,8 @@ public class MainActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             ImageView pic2 = new ImageView(context);
-            //for (Integer movie: movieList) {
-            //    pic2.setImageResource(movie);
-            //}
             pic2.setImageResource(movieList.get(position));
-            //pic2.setImageResource(movieList[position]); //if it was just an array
+            //pic2.setImageResource(movieList[position]); //if it was just an array instead and not a List
             pic2.setScaleType(ImageView.ScaleType.FIT_XY);
             pic2.setLayoutParams(new GridView.LayoutParams(330,375));
             return pic2;
