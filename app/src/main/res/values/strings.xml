@@ -2,6 +2,7 @@
     <string name="app_name">MAD155Module7ImageOrganizer</string>
     <string name="txtTitle">Movie Image Organizer</string>
     <string name="txtScrollInstructions">Scroll and Pick Your Favorite Star</string>
+    <string name="txtScrollInstructions2">Scroll to See Movies</string>
 
     <string name="imgLarge">Actor or Actress Image</string>
     <string name="txtName"></string>
