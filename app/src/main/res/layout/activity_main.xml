@@ -52,28 +52,14 @@
 
     <ImageView
         android:id="@+id/imgLarge"
-        android:layout_width="110dp"
-        android:layout_height="112dp"
+        android:layout_width="157dp"
+        android:layout_height="194dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInstructions2" />
-
-    <ImageView
-        android:id="@+id/imgLarge2"
-        android:layout_width="110dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="8dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLarge" />
 
     <TextView
         android:id="@+id/txtName"
@@ -115,26 +101,23 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:columnWidth="125dp"
+        android:fadeScrollbars="false"
+        android:horizontalSpacing="5dp"
+        android:numColumns="1"
+        android:orientation="vertical"
+        android:scrollX="12dp"
+        android:scrollY="12dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarSize="12dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        android:verticalScrollbarPosition="right"
+        android:verticalSpacing="5dp"
         android:scrollbarThumbVertical="@drawable/custom_scroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.608"
         app:layout_constraintStart_toEndOf="@+id/imgLarge"
         app:layout_constraintTop_toBottomOf="@+id/txtInstructions2" />
-
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="202dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="244dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/holo_orange_light"
-        android:text="@string/btn1"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
 </android.support.constraint.ConstraintLayout>
