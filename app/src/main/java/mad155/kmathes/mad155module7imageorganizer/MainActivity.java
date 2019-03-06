@@ -102,8 +102,7 @@ public class MainActivity extends AppCompatActivity {
     //GridView grid2;
     List<Integer> movieList;
 
-    Button btnShowMovies;
-
+    int clickedActor = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,12 +121,17 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_main);
 
 
+
         GridView grid1 = (GridView) findViewById(R.id.gridView1);
         final GridView grid2 = (GridView) findViewById(R.id.gridView2);
 
         final ImageView pic = (ImageView) findViewById(R.id.imgLarge);
 
         final TextView celebNameTV = (TextView) findViewById(R.id.txtName);
+        final TextView txtScrollInst2 = (TextView) findViewById(R.id.txtInstructions2);
+
+        txtScrollInst2.setVisibility(View.INVISIBLE);
+        grid2.setVisibility(View.INVISIBLE);
 
         grid1.setAdapter(new ImageAdapter1(this));
 
@@ -142,34 +146,39 @@ public class MainActivity extends AppCompatActivity {
                 pic.setImageResource(celebrityPic[position]);
                 celebNameTV.setText(celebrityName[position]);
 
+                txtScrollInst2.setVisibility(View.VISIBLE);
+                grid2.setVisibility(View.VISIBLE);
+
                 switch(position) {
                     case 0:
-                        //movieList.clear(); //can/should I use something like this?
-                        //grid2.setAdapter(new ImageAdapter2(this));
+                        movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(cateMovies));
-                        System.out.println("IN THE CATE ARRAY");
-                        for(Integer kam: movieList){
-                            System.out.println("movie in list: " + kam);
-                        }
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         break;
                     case 1:
+                        movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(jenniferMovies));
-                        System.out.println("IN THE JENNIFER ARRAY");
-                        for(Integer kam: movieList){
-                            System.out.println("movie in list: " + kam);
-                        }
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         break;
                     case 2:
+                        movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(kateMovies));
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         break;
                     case 3:
+                        movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(orlandoMovies));
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         break;
                     case 4:
+                        movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(tomMovies));
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         break;
                     case 5:
+                        movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(willMovies));
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         break;
                     default:
                         System.out.println("OOPS!!! BIG PROBLEM");
@@ -180,26 +189,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        movieList = new ArrayList<>(Arrays.asList(willMovies));
-        if(movieList == null || movieList.isEmpty()){
-            System.out.println("MOVIELIST LIST IS EMPTY OR NULL");
-        } else {
-            grid2.setAdapter(new ImageAdapter2(this));
-            System.out.println("ATTEMPTING TO SET GRID2.ADAPTER... in else stmt");
+        //.. testing
+        movieList = new ArrayList<>(Arrays.asList(tomMovies));
+        grid2.setAdapter(new ImageAdapter2(this));
+        //movieList.clear();
+        //movieList = new ArrayList<>(Arrays.asList(willMovies));
+        //grid2.setAdapter(new ImageAdapter2(this));
 
-        }
+
 
 
     }
 
-    Button.OnClickListener bShowMovies = new Button.OnClickListener() {
-        @Override
-        public void onClick(View v) {
 
-            //set up what to pass and perform intent
-
-        }
-    };
 
     public class ImageAdapter1 extends BaseAdapter {
 
@@ -229,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
             pic = new ImageView(context);
             pic.setImageResource(celebrityPic[position]);
             pic.setScaleType(ImageView.ScaleType.FIT_XY);
-            pic.setLayoutParams(new GridView.LayoutParams(330,375));
+            pic.setLayoutParams(new GridView.LayoutParams(225,275));
             return pic;
         }
     }
