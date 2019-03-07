@@ -1,19 +1,31 @@
 <resources>
     <string name="app_name">MAD155Module7ImageOrganizer</string>
     <string name="txtTitle">Movie Image Organizer</string>
-    <string name="txtScrollInstructions">Scroll and Pick Your Favorite Star</string>
-    <string name="txtScrollInstructions2">Scroll to See Movies</string>
+    <string name="txtScrollInstructions">Scroll and Click on Your Favorite Star</string>
+    <string name="txtScrollInstructions2">Scroll and Click to See Movies on IMDB</string>
 
     <string name="imgLarge">Actor or Actress Image</string>
     <string name="txtName"></string>
     <string name="btn1">Click for Movie List</string>
 
-    <string name="name1">Cate Blanchett</string>
+    <!--<string name="name1">Cate Blanchett</string>
     <string name="name2">Jennifer Lawrence</string>
     <string name="name3">Kate Winslet</string>
     <string name="name4">Orlando Bloom</string>
     <string name="name5">Tom Hanks</string>
     <string name="name6">Will Smith</string>
+    -->
+
+    <string name="txtBtnCate">Click for IMDB Cate Blanchett Bio</string>
+    <string name="txtBtnJennifer">Click for IMDB Jennifer Lawrence Bio</string>
+    <string name="txtBtnKate">Click for IMDB Kate Winslet Bio</string>
+    <string name="txtBtnOrlando">Click for IMDB Orlando Bloom Bio</string>
+    <string name="txtBtnTom">Click for IMDB Tom Hanks Bio</string>
+    <string name="txtBtnWill">Click for IMDB Will Smith Bio</string>
+
+    <string name="btnImdb">Click for IMDB Bio</string>
+
+
 
 
 </resources>

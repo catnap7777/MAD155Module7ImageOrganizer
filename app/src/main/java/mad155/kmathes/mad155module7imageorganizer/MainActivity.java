@@ -1,7 +1,12 @@
 package mad155.kmathes.mad155module7imageorganizer;
 
+import android.app.ActionBar;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +22,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.orlando1,
             R.drawable.tom1,
             R.drawable.will1
-            };
+    };
 
     Integer[] cateMovies = {
             R.drawable.cate_elizabeth1,
@@ -42,6 +48,18 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.cate_ragnarok
     };
 
+    String[] txtCateMovies = {
+            "Elizabeth",
+            "Elizabeth",
+            "Lord of the Rings Fellowship",
+            "Lord of the Rings Return of the King",
+            "The Hobbit",
+            "Indiana Jones and the Crystal Skull",
+            "The Monuments Men",
+            "Oceans 8",
+            "Thor Ragnarok"
+    };
+
     Integer[] jenniferMovies = {
             R.drawable.jennifer_apocalypse,
             R.drawable.jennifer_xmen_first,
@@ -50,6 +68,16 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.jennifer_joy,
             R.drawable.jennifer_passengers,
             R.drawable.jennifer_silver
+    };
+
+    String[] txtJenniferMovies = {
+            "XMen Apocalypse",
+            "XMen First Class",
+            "Hunger Games",
+            "American Hustle",
+            "Joy",
+            "Passengers",
+            "Silver Linings Playbook"
     };
 
     Integer[] kateMovies = {
@@ -61,12 +89,29 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.kate_titanic
     };
 
+    String[] txtKateMovies = {
+            "A Little Chaos",
+            "Divergent",
+            "The Dressmaker",
+            "The Holiday",
+            "Sense and Sensibility",
+            "Titanic"
+    };
+
     Integer[] orlandoMovies = {
             R.drawable.orlando_lotr_fellowship,
             R.drawable.orlando_hobbit,
             R.drawable.orlando_kingdom,
             R.drawable.orlando_musketeers,
             R.drawable.orlando_pirates
+    };
+
+    String[] txtOrlandoMovies = {
+            "Lord of the Rings Fellowship",
+            "The Hobbit",
+            "Last Kingdom",
+            "The Three Musketeers",
+            "Pirates of the Caribbean"
     };
 
     Integer[] tomMovies = {
@@ -79,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.tom_toystory
     };
 
+    String[] txtTomMovies = {
+            "Big",
+            "The DaVinci Code",
+            "Forrest Gump",
+            "Sleepless in Seattle",
+            "Bridge of Spies",
+            "The Terminal",
+            "Toy Story"
+    };
+
     Integer[] willMovies = {
             R.drawable.will_bright,
             R.drawable.will_hancock,
@@ -88,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.will_mib
     };
 
+    String[] txtWillMovies = {
+            "Bright",
+            "Hancock",
+            "Pursuit of Happiness",
+            "I, Robot",
+            "Suicide Squad",
+            "Men in Black"
+    };
+
     String[] celebrityName = {
             "Cate Blanchett",
             "Jennifer Lawerence",
@@ -95,11 +159,14 @@ public class MainActivity extends AppCompatActivity {
             "Orlando Bloom",
             "Tom Hanks",
             "Will Smith"
-            };
+    };
 
     ImageView pic;
 
     List<Integer> movieList;
+
+    String selectedCelebName = " ";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
 
         //.. set the title on the action bar for this activity and override title in manifest
         setTitle(R.string.txtTitle);
+
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         //.. to get rid of action bar for this activity (because I needed more room on screen
         //try
@@ -123,11 +195,15 @@ public class MainActivity extends AppCompatActivity {
 
         final ImageView pic = (ImageView) findViewById(R.id.imgLarge);
 
-        final TextView celebNameTV = (TextView) findViewById(R.id.txtName);
         final TextView txtScrollInst2 = (TextView) findViewById(R.id.txtInstructions2);
+
+        final Button buttonImdb = (Button) findViewById(R.id.btnImdb);
+
+        buttonImdb.setOnClickListener(bImdb);
 
         txtScrollInst2.setVisibility(View.INVISIBLE);
         grid2.setVisibility(View.INVISIBLE);
+        buttonImdb.setVisibility(View.INVISIBLE);
 
         grid1.setAdapter(new ImageAdapter1(this));
 
@@ -139,41 +215,49 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
 
                 pic.setImageResource(celebrityPic[position]);
-                celebNameTV.setText(celebrityName[position]);
+                selectedCelebName = celebrityName[position];
+
 
                 txtScrollInst2.setVisibility(View.VISIBLE);
                 grid2.setVisibility(View.VISIBLE);
+                buttonImdb.setVisibility(View.VISIBLE);
 
                 switch(position) {
                     case 0:
                         movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(cateMovies));
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnCate));
                         break;
                     case 1:
                         movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(jenniferMovies));
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnJennifer));
                         break;
                     case 2:
                         movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(kateMovies));
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnKate));
                         break;
                     case 3:
                         movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(orlandoMovies));
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnOrlando));
                         break;
                     case 4:
                         movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(tomMovies));
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnTom));
                         break;
                     case 5:
                         movieList.clear();
                         movieList = new ArrayList<>(Arrays.asList(willMovies));
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnWill));
                         break;
                     default:
                         System.out.println("OOPS!!! BIG PROBLEM");
@@ -192,7 +276,86 @@ public class MainActivity extends AppCompatActivity {
         //movieList = new ArrayList<>(Arrays.asList(willMovies));
         //grid2.setAdapter(new ImageAdapter2(this));
 
+        grid2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //String selectedValue = (String) getListAdapter().getItem(position);
+                String selectedValue = " ";
+
+
+                switch(selectedCelebName) {
+                    case "Cate Blanchett":
+                        selectedValue = txtCateMovies[position];
+                        break;
+                    case "Jennifer Lawrence":
+                        selectedValue = txtJenniferMovies[position];
+                        break;
+                    case "Kate Winslett":
+                        selectedValue = txtKateMovies[position];
+                        break;
+                    case "Orlando Bloom":
+                        selectedValue = txtOrlandoMovies[position];
+                        break;
+                    case "Tom Hanks":
+                        selectedValue = txtTomMovies[position];
+                        break;
+                    case "Will Smith":
+                        selectedValue = txtWillMovies[position];
+                        break;
+                    default:
+                        break;
+
+                }
+
+                //if(position == 0){
+                //    selectedValue = txtCateMovies[position];
+
+                    System.out.println("txtCateMovie = " + selectedValue +
+                        " position: " + position);
+
+                    selectedValue = selectedValue.replaceAll("\\s", "+");
+
+                    Uri.Builder builder = new Uri.Builder();
+                    builder.scheme("https")
+                            .authority("www.imdb.com")
+                            .appendPath("find")
+                            .appendQueryParameter("ref_","nv_sr_fn")
+                            .appendQueryParameter("q",selectedValue) //from the title parsed and reformatted from the list item selected
+                            .appendQueryParameter("s","all");
+
+                    String myUrl = builder.build().toString();
+
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(myUrl)));
+                //}
+            }
+        });
+
     }
+
+    Button.OnClickListener bImdb = new Button.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+
+            String celebLookupName = selectedCelebName;
+
+            celebLookupName = celebLookupName.replaceAll("\\s", "+");
+
+            Uri.Builder builder = new Uri.Builder();
+            builder.scheme("https")
+                    .authority("www.imdb.com")
+                    .appendPath("find")
+                    .appendQueryParameter("ref_","nv_sr_fn")
+                    .appendQueryParameter("q",celebLookupName) //from the title parsed and reformatted from the list item selected
+                    .appendQueryParameter("s","all");
+
+            String myUrl = builder.build().toString();
+
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(myUrl)));
+
+        }
+    };
 
     public class ImageAdapter1 extends BaseAdapter {
 
@@ -222,7 +385,9 @@ public class MainActivity extends AppCompatActivity {
             pic = new ImageView(context);
             pic.setImageResource(celebrityPic[position]);
             pic.setScaleType(ImageView.ScaleType.FIT_XY);
-            pic.setLayoutParams(new GridView.LayoutParams(225,275));
+            //pic.setLayoutParams(new GridView.LayoutParams(215,265));
+            //pic.setLayoutParams(new GridView.LayoutParams(225,275));
+            pic.setLayoutParams(new GridView.LayoutParams(300,350));
             return pic;
         }
     }
@@ -261,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
             pic2.setImageResource(movieList.get(position));
             //pic2.setImageResource(movieList[position]); //if it was just an array instead and not a List
             pic2.setScaleType(ImageView.ScaleType.FIT_XY);
-            pic2.setLayoutParams(new GridView.LayoutParams(330,375));
+            pic2.setLayoutParams(new GridView.LayoutParams(380,445));
             return pic2;
         }
     }
