@@ -7,9 +7,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.net.Uri;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -167,6 +169,8 @@ public class MainActivity extends AppCompatActivity {
 
     String selectedCelebName = " ";
 
+    ConstraintLayout const1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,6 +193,8 @@ public class MainActivity extends AppCompatActivity {
         //catch (NullPointerException e){}
         //setContentView(R.layout.activity_main);
 
+        const1 = (ConstraintLayout) findViewById(R.id.constraintLayout1);
+        const1.setBackgroundResource(R.drawable.popcorn2);
 
         GridView grid1 = (GridView) findViewById(R.id.gridView1);
         final GridView grid2 = (GridView) findViewById(R.id.gridView2);
@@ -205,6 +211,13 @@ public class MainActivity extends AppCompatActivity {
         grid2.setVisibility(View.INVISIBLE);
         buttonImdb.setVisibility(View.INVISIBLE);
 
+        // ??? what does this do
+        //grid2.smoothScrollByOffset(int offset)
+        //grid2.smoothScrollByOffset(1);
+        grid1.smoothScrollToPosition(0);
+        grid1.setFriction(ViewConfiguration.getScrollFriction() * 55);
+        grid2.setFriction(ViewConfiguration.getScrollFriction() * 55);
+
         grid1.setAdapter(new ImageAdapter1(this));
 
         grid1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -216,7 +229,9 @@ public class MainActivity extends AppCompatActivity {
 
                 pic.setImageResource(celebrityPic[position]);
                 selectedCelebName = celebrityName[position];
-
+                //const1.setBackgroundColor(1);
+                //const1.setBackgroundColor(Color.WHITE);
+                const1.setBackgroundColor(0xffAEBAC4);
 
                 txtScrollInst2.setVisibility(View.VISIBLE);
                 grid2.setVisibility(View.VISIBLE);
@@ -426,7 +441,7 @@ public class MainActivity extends AppCompatActivity {
             pic2.setImageResource(movieList.get(position));
             //pic2.setImageResource(movieList[position]); //if it was just an array instead and not a List
             pic2.setScaleType(ImageView.ScaleType.FIT_XY);
-            pic2.setLayoutParams(new GridView.LayoutParams(380,445));
+            pic2.setLayoutParams(new GridView.LayoutParams(375,485));
             return pic2;
         }
     }
