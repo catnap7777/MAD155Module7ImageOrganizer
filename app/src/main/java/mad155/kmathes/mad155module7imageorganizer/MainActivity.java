@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     //.. Celebrity names for IMDB search
     String[] celebrityName = {
             "Cate Blanchett",
-            "Jennifer Lawerence",
+            "Jennifer Lawrence",
             "Kate Winslet",
             "Orlando Bloom",
             "Tom Hanks",
@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity {
                     case "Jennifer Lawrence":
                         selectedValue = txtJenniferMovies[position];
                         break;
-                    case "Kate Winslett":
+                    case "Kate Winslet":
                         selectedValue = txtKateMovies[position];
                         break;
                     case "Orlando Bloom":
