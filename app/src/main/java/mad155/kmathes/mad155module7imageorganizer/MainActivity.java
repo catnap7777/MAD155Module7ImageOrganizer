@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.kate1,
             R.drawable.orlando1,
             R.drawable.tom1,
-            R.drawable.will1
+            R.drawable.will1,
+            R.drawable.robert1
     };
 
     //.. Cate Blanchett movie images for GridView2
@@ -167,6 +168,24 @@ public class MainActivity extends AppCompatActivity {
             "Men in Black"
     };
 
+    //.. Robert Downey Jr. movie images for GridView2
+    Integer[] robertMovies = {
+            R.drawable.robert_avengers,
+            R.drawable.robert_civil_war,
+            R.drawable.robert_iron_man,
+            R.drawable.robert_only_you,
+            R.drawable.robert_sherlock
+    };
+
+    //.. Robert Downey Jr. movie names for IMDB search
+    String[] txtRobertMovies = {
+            "Avengers Infinity War",
+            "Captain America Civil War",
+            "Iron Man",
+            "Only You",
+            "Sherlock Holmes"
+    };
+
     //.. Celebrity names for IMDB search
     String[] celebrityName = {
             "Cate Blanchett",
@@ -174,7 +193,8 @@ public class MainActivity extends AppCompatActivity {
             "Kate Winslet",
             "Orlando Bloom",
             "Tom Hanks",
-            "Will Smith"
+            "Will Smith",
+            "Robert Downey Jr."
     };
 
     ImageView pic;
@@ -292,6 +312,12 @@ public class MainActivity extends AppCompatActivity {
                         grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
                         buttonImdb.setText(getString(R.string.txtBtnWill));
                         break;
+                    case 6:
+                        movieList.clear();
+                        movieList = new ArrayList<>(Arrays.asList(robertMovies));
+                        grid2.setAdapter(new ImageAdapter2(getApplicationContext()));
+                        buttonImdb.setText(getString(R.string.txtBtnRobert));
+                        break;
                     default:
                         System.out.println("OOPS!!! BIG PROBLEM");
                         break;
@@ -337,6 +363,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case "Will Smith":
                         selectedValue = txtWillMovies[position];
+                        break;
+                    case "Robert Downey Jr.":
+                        selectedValue = txtRobertMovies[position];
                         break;
                     default:
                         break;
