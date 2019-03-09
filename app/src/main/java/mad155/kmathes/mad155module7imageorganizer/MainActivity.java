@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         //.. set the title on the action bar for this activity and override title in manifest
         setTitle(R.string.txtTitle);
 
-
+        //.. set logo on action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.ic_launcher);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
@@ -207,11 +207,12 @@ public class MainActivity extends AppCompatActivity {
 
         buttonImdb.setOnClickListener(bImdb);
 
+        //.. make grid2, scroll instructions, and button invisible until user selects actor/actress
         txtScrollInst2.setVisibility(View.INVISIBLE);
         grid2.setVisibility(View.INVISIBLE);
         buttonImdb.setVisibility(View.INVISIBLE);
 
-        // ??? what does this do
+        // ??? not sure I know what this does but I was attempting to make scrolling slower
         //grid2.smoothScrollByOffset(int offset)
         //grid2.smoothScrollByOffset(1);
         grid1.smoothScrollToPosition(0);
@@ -229,14 +230,17 @@ public class MainActivity extends AppCompatActivity {
 
                 pic.setImageResource(celebrityPic[position]);
                 selectedCelebName = celebrityName[position];
+                //.. set background for constraint layout
                 //const1.setBackgroundColor(1);
                 //const1.setBackgroundColor(Color.WHITE);
                 const1.setBackgroundColor(0xffAEBAC4);
 
+                //.. make grid2, scroll instructions, and button visible again once user selects actor/actress
                 txtScrollInst2.setVisibility(View.VISIBLE);
                 grid2.setVisibility(View.VISIBLE);
                 buttonImdb.setVisibility(View.VISIBLE);
 
+                //.. setup the movies for grid whatever actress/actor was selected
                 switch(position) {
                     case 0:
                         movieList.clear();
@@ -283,10 +287,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //..  for testing and initially to have something in movieList otherwise
-        //..  I get a null error when I try movieList.clear() in switch stmt
+        //.. for testing and initially to have something in movieList otherwise
+        //..  I get a null error when I try movieList.clear() in switch stmt above
         movieList = new ArrayList<>(Arrays.asList(tomMovies));
         grid2.setAdapter(new ImageAdapter2(this));
+        //.. for more testing
         //movieList.clear();
         //movieList = new ArrayList<>(Arrays.asList(willMovies));
         //grid2.setAdapter(new ImageAdapter2(this));
@@ -298,7 +303,8 @@ public class MainActivity extends AppCompatActivity {
                 //String selectedValue = (String) getListAdapter().getItem(position);
                 String selectedValue = " ";
 
-
+                //.. if a movie for an actor/actress is selected, save movie name so that
+                //..  an intent can be kicked off to go look it up on IMDB
                 switch(selectedCelebName) {
                     case "Cate Blanchett":
                         selectedValue = txtCateMovies[position];
@@ -323,12 +329,11 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
-                //if(position == 0){
-                //    selectedValue = txtCateMovies[position];
+                //.. for testing
+                //    System.out.println("txtCateMovie = " + selectedValue +
+                //        " position: " + position);
 
-                    System.out.println("txtCateMovie = " + selectedValue +
-                        " position: " + position);
-
+                //.. Build URI for intent for looking up movie on IMDB
                     selectedValue = selectedValue.replaceAll("\\s", "+");
 
                     Uri.Builder builder = new Uri.Builder();
@@ -340,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
                             .appendQueryParameter("s","all");
 
                     String myUrl = builder.build().toString();
-
+                    //.. Go look up movie
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(myUrl)));
                 //}
             }
@@ -348,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //.. listener for if user clicks button and want to look up the actual actor/actress on IMDB
     Button.OnClickListener bImdb = new Button.OnClickListener() {
 
         @Override
@@ -355,6 +361,7 @@ public class MainActivity extends AppCompatActivity {
 
             String celebLookupName = selectedCelebName;
 
+            //.. Build URI for intent for looking up actor/actress on IMDB
             celebLookupName = celebLookupName.replaceAll("\\s", "+");
 
             Uri.Builder builder = new Uri.Builder();
@@ -372,6 +379,7 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //.. adapter for grid1
     public class ImageAdapter1 extends BaseAdapter {
 
         private Context context;
@@ -407,6 +415,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //.. adapter for grid2
     public class ImageAdapter2 extends BaseAdapter {
 
         private Context context;
