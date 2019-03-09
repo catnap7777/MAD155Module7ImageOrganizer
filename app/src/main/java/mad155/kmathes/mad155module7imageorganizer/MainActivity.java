@@ -29,6 +29,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    //.. celebrity pictures array for images for GridView1
     Integer[] celebrityPic = {
             R.drawable.cate1,
             R.drawable.jennifer1,
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.will1
     };
 
+    //.. Cate Blanchett movie images for GridView2
     Integer[] cateMovies = {
             R.drawable.cate_elizabeth1,
             R.drawable.cate_elizabeth2,
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.cate_ragnarok
     };
 
+    //.. Cate Blanchett movie names for IMDB search
     String[] txtCateMovies = {
             "Elizabeth",
             "Elizabeth",
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             "Thor Ragnarok"
     };
 
+    //.. Jennifer Lawrence movie images for GridView2
     Integer[] jenniferMovies = {
             R.drawable.jennifer_apocalypse,
             R.drawable.jennifer_xmen_first,
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.jennifer_silver
     };
 
+    //.. Jennifer Lawrence movie names for IMDB search
     String[] txtJenniferMovies = {
             "XMen Apocalypse",
             "XMen First Class",
@@ -82,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
             "Silver Linings Playbook"
     };
 
+    //.. Kate Winslet movie images for GridView2
     Integer[] kateMovies = {
             R.drawable.kate_chaos,
             R.drawable.kate_divergent,
@@ -91,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.kate_titanic
     };
 
+    //.. Kate Winslet movie names for IMDB search
     String[] txtKateMovies = {
             "A Little Chaos",
             "Divergent",
@@ -100,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
             "Titanic"
     };
 
+    //.. Orlando Bloom movie images for GridView2
     Integer[] orlandoMovies = {
             R.drawable.orlando_lotr_fellowship,
             R.drawable.orlando_hobbit,
@@ -108,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.orlando_pirates
     };
 
+    //.. Orlando Bloom movie names for IMDB search
     String[] txtOrlandoMovies = {
             "Lord of the Rings Fellowship",
             "The Hobbit",
@@ -116,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             "Pirates of the Caribbean"
     };
 
+    //.. Tom Hanks movie images for GridView2
     Integer[] tomMovies = {
             R.drawable.tom_big,
             R.drawable.tom_davinci,
@@ -126,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.tom_toystory
     };
 
+    //.. Tom Hanks movie names for IMDB search
     String[] txtTomMovies = {
             "Big",
             "The DaVinci Code",
@@ -136,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
             "Toy Story"
     };
 
+    //.. Will Smith movie images for GridView2
     Integer[] willMovies = {
             R.drawable.will_bright,
             R.drawable.will_hancock,
@@ -145,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.will_mib
     };
 
+    //.. Will Smith movie names for IMDB search
     String[] txtWillMovies = {
             "Bright",
             "Hancock",
@@ -154,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             "Men in Black"
     };
 
+    //.. Celebrity names for IMDB search
     String[] celebrityName = {
             "Cate Blanchett",
             "Jennifer Lawerence",
